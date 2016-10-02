@@ -1,0 +1,29 @@
+Problem : https://www.kaggle.com/c/digit-recognizer
+
+
+***your train/test files should bee in ./data/train.csv and ./data/test.csv
+
+See the data: 
+python code : generate_images.py 
+it produces images in root folder with name as label.
+
+Feature Generation : 
+python code : generate_features.py
+1. divide image into x*x sets and count number of set bits(set bit is with close to white color compared to black).
+2. ratio of features from 1 and divide with total number of set bits. 
+ 
+Model : 
+xgoost. 
+python code : model_xgbt.py 
+How to run : 
+	for test:
+		python3 model_xgbt.py 1 
+		print classified vs misclassified number. 
+		draw pictures of misclassified with prediction as name in images folder
+	for prod:
+		python3 model_xgbt.py 0
+		generate final file in data/final.csv
+
+
+
+
