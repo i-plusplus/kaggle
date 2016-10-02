@@ -21,15 +21,16 @@ y_pred = xgb.predict(f_test.values)
 y_pred = le.inverse_transform(y_pred)
 if isTest == 1 :
 	y_f = y_pred == label_test.values
-	len(y_f[y_f==False])
-	len(y_f[y_f==True])
+	print("misclassified = " + str(len(y_f[y_f==False])))
+	print("currect class = " + str(len(y_f[y_f==True])))
+	print("score = " + str(len(y_f[y_f==True])/len(y_f)))
 	t = test[~y_f]
 	l = label_test[~y_f]
 	l_p = y_pred[~y_f]
 	for i in range(0, len(l)):
 		di.draw(t[i:i+1].values[0,], "images/prob_" + str(i) + "_" + str(l.values[i]) + "_" + str(l_p[i]) )
 else :
-	index = range(1,len(y_pred)+1)
+	index = list(range(1,len(y_pred)+1))
 	index = pd.DataFrame(index, columns = ['ImageId'])
 	y_pred = pd.DataFrame(y_pred, columns = ['Label'])
 	final = pd.concat([index, y_pred], axis = 1)
